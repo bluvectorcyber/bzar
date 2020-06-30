@@ -10,22 +10,11 @@
 module BZAR;
 
 #
-# DCE-RPC Event Handlers
+# DCE-RPC Event Handler
 #
 
-@if ((Version::info$major == 2) && (Version::info$minor <= 5))
-
-# Use this syntax for Bro v2.5.x and below
-event dce_rpc_response(c: connection, fid: count, opnum: count, stub_len: count) &priority=3
-{
-
-@else
-
-# Use this syntax for Bro v2.6.x and above
 event dce_rpc_response(c: connection, fid: count, ctx_id: count, opnum: count, stub_len: count) &priority=3
 {
-
-@endif
 	# priority==3 ... We want to execute before writing to dce_rpc.log
 	# because default Bro script deletes 'c$dce_rpc' after writing to log
 

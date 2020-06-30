@@ -33,10 +33,6 @@ export
 	# overwritten in its entirety, or just a smaller sub-section is
 	# overwritten, which would be an interesting diagnostic to detect.
 
-@if ((Version::info$major == 2) && (Version::info$minor <= 5))
-	# Use this syntax for Bro v2.5.x and below
-	redef SMB::write_cmd_log	=  T &redef;
-@endif
 	redef SMB::logged_file_actions	+= { SMB::FILE_WRITE, } &redef;
 
 	redef record SMB::FileInfo	+= 

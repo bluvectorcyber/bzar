@@ -7,18 +7,7 @@
 # Approved for public release.  Distribution unlimited.  Case number 18-3868.
 #
 
-@if ((Version::info$major == 2) && (Version::info$minor <= 5))
-
-# Use this syntax for Bro v2.5.x and below
-@load policy/protocols/smb
-
-@else
-
-# Use this syntax for Bro v2.6.x and above
 @load base/protocols/smb
-
-@endif
-
 @load base/protocols/dce-rpc
 @load base/frameworks/files
 @load base/frameworks/notice
@@ -155,20 +144,8 @@ function sort_func( a : double, b : double ) : int
 # BZAR Initialization
 #
 
-@if ( Version::info$major >= 3 )
-
-# Use this syntax for Zeek v3.x.x and above
 event zeek_init()
 {
-
-@else
-
-# Use this syntax for Bro v2.x.x and below
-event bro_init()
-{
-
-@endif
-
 	# 1- SumStats Analytics for ATT&CK Lateral Movement and Execution
 	#
 	# Description:

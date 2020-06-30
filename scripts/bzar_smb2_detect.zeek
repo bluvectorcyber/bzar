@@ -55,19 +55,8 @@ event smb2_tree_connect_request(c: connection, hdr: SMB2::Header, path: string) 
 }
 
 
-@if ((Version::info$major == 2) && (Version::info$minor <= 5))
-
-# Use this syntax for Bro v2.5.x and below
-event smb2_create_request(c: connection, hdr: SMB2::Header, name: string) &priority=3
-{
-
-@else
-
-# Use this syntax for Bro v2.6.x and above
 event smb2_create_request(c: connection, hdr: SMB2::Header, request: SMB2::CreateRequest) &priority=3
 {
-
-@endif
 	# Copied this snippet from Bro default handler:
 	# policy/protocols/smb/smb1-main.bro#smb1_write_andx_request.
 	# It is important to know the full file path at SMB::FILE_OPEN time,
