@@ -16,7 +16,7 @@ module BZAR;
 event dce_rpc_response(c: connection, fid: count, ctx_id: count, opnum: count, stub_len: count) &priority=3
 {
 	# priority==3 ... We want to execute before writing to dce_rpc.log
-	# because default Bro script deletes 'c$dce_rpc' after writing to log
+	# because default Zeek script deletes 'c$dce_rpc' after writing to log
 
 	local rpc = "";
 

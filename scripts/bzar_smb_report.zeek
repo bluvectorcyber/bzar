@@ -187,7 +187,7 @@ function smb_t1077_t1105_log ( c : connection, action : string ) : bool
 	# 02:	SMB1-Write-Response
 	#	SMB2-Write-Request*
 	#
-	#	* NOTE: Bro/Zeek event for SMB2-Write-Response was introduced
+	#	* NOTE: Zeek event for SMB2-Write-Response was introduced
 	#	  in Zeek v3.0.0.  Therefore, for Bro v2.6 (and earlier), need
 	#	  to use SMB2-Write-Request event instead.
 	#

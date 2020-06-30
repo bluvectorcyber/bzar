@@ -15,7 +15,7 @@ module BZAR;
 
 event smb2_message(c: connection, hdr: SMB2::Header, is_orig: bool) &priority=3
 {
-	# Copied this snippet from Bro default handler:
+	# Copied this snippet from Zeek default handler:
 	# base/protocols/smb/smb1-main.zeek#smb1_message.
 	# The smb_cmd.log was inconsistent with the .$tree field
 	# for SMB1 (populated) and SMB2 (was not populated).
@@ -29,7 +29,7 @@ event smb2_tree_connect_request(c: connection, hdr: SMB2::Header, path: string) 
 {
 	local smb_action = "SMB::TREE_CONNECT to";
 
-	# Copied this snippet from Bro default handler:
+	# Copied this snippet from Zeek default handler:
 	# base/protocols/smb/smb1-main.zeek#smb1_tree_connect_andx_request.
 	# The smb_cmd.log was inconsistent with certain fields
 	# for SMB1 (populated) and SMB2 (was not populated).
@@ -57,7 +57,7 @@ event smb2_tree_connect_request(c: connection, hdr: SMB2::Header, path: string) 
 
 event smb2_create_request(c: connection, hdr: SMB2::Header, request: SMB2::CreateRequest) &priority=3
 {
-	# Copied this snippet from Bro default handler:
+	# Copied this snippet from Zeek default handler:
 	# base/protocols/smb/smb1-main.zeek#smb1_write_andx_request.
 	# It is important to know the full file path at SMB::FILE_OPEN time,
 	# so the smb_files.log is consistent with smb_cmd.log.
@@ -83,7 +83,7 @@ event smb2_write_request(c: connection, hdr: SMB2::Header, file_id: SMB2::GUID, 
 	# NOTE: Preference would be to detect 'smb2_write_response' 
 	#       event (instead of 'smb2_write_request'), because it 
 	#       would confirm the file was actually written to the 
-	#       remote destination.  Unfortuantely, Bro/Zeek does 
+	#       remote destination.  Unfortuantely, Zeek does 
 	#       not have an event for that SMB message-type yet.
 
 	local smb_action = "SMB::FILE_WRITE to";

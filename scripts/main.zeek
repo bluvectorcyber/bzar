@@ -149,7 +149,7 @@ event zeek_init()
 	# 1- SumStats Analytics for ATT&CK Lateral Movement and Execution
 	#
 	# Description:
-	#    Use SumStats to raise a Bro/Zeek Notice event if an SMB Lateral Movement 
+	#    Use SumStats to raise a Zeek Notice event if an SMB Lateral Movement 
 	#    indicator (e.g., SMB File Write to a Windows Admin File Share: ADMIN$ or 
 	#    C$ only) is observed together with a DCE-RPC Execution indicator against 
 	#    the same (targeted) host, within a specified period of time.
@@ -158,7 +158,7 @@ event zeek_init()
 	#    T1077 Windows Admin Shares (file shares only, not named pipes) &&
 	#    T1105 Remote File Copy && (T1035 Service Execution || T1047 WMI || T1053 Scheduled Task)
 	#
-	# Relevant Indicator(s) Detected by Bro/Zeek:
+	# Relevant Indicator(s) Detected by Zeek:
 	#    (a) smb1_write_andx_response::c$smb_state$path contains ADMIN$ or C$
 	#    (b) smb2_write_request::c$smb_state$path contains ADMIN$ or C$ *
 	#    (c) dce_rpc_response::c$dce_rpc$endpoint + c$dce_rpc$operation contains 
@@ -168,7 +168,7 @@ event zeek_init()
 	# NOTE: Preference would be to detect 'smb2_write_response' 
 	#       event (instead of 'smb2_write_request'), because it 
 	#       would confirm the file was actually written to the 
-	#       remote destination.  Unfortuantely, Bro/Zeek does 
+	#       remote destination.  Unfortuantely, Zeek does 
 	#       not have an event for that SMB message-type yet.
 	#
 	# Globals (defined in main.zeek above):
@@ -212,7 +212,7 @@ event zeek_init()
 	# 2- SumStats Analytics for ATTACK Lateral Movement (Multiple Attempts)
 	#
 	# Description:
-	#    Use SumStats to raise a Bro/Zeek Notice event if multiple SMB Lateral 
+	#    Use SumStats to raise a Zeek Notice event if multiple SMB Lateral 
 	#    Movement indicators (e.g., multiple attempts to connect to a Windows Admin
 	#    File Share: ADMIN$ or C$ only) are observed originating from the same host, 
 	#    regardless of write-attempts and regardless of whether or not any connection
@@ -221,7 +221,7 @@ event zeek_init()
 	# Relevant ATT&CK Technique(s):
 	#    T1077 Windows Admin Shares (file shares only, not named pipes)
 	#
-	# Relevant Indicator(s) Detected by Bro/Zeek:
+	# Relevant Indicator(s) Detected by Zeek:
 	#    (a) smb1_tree_connect_andx_request::c$smb_state$path contains ADMIN$ or C$
 	#    (b) smb2_tree_connect_request::c$smb_state$path contains ADMIN$ or C$
 	#
@@ -258,7 +258,7 @@ event zeek_init()
 	# 3- SumStats Analytics for ATTACK Discovery
 	#
 	# Description:
-	#    Use SumStats to raise a Bro/Zeek Notice event if multiple instances of 
+	#    Use SumStats to raise a Zeek Notice event if multiple instances of 
 	#    DCE-RPC Discovery indicators are observed originating from the same host, 
 	#    within a specified period of time.
 	#
@@ -273,7 +273,7 @@ event zeek_init()
 	#    T1124 System Time Discovery
 	#    T1135 Network Share Discovery
 	#
-	# Relevant Indicator(s) Detected by Bro/Zeek:
+	# Relevant Indicator(s) Detected by Zeek:
 	#    (a) dce_rpc_response::c$dce_rpc$endpoint + c$dce_rpc$operation contains 
 	#        any of the following: (see BZAR::txxxx_rpc_strings set for each relevant
 	#        ATT&CK Technique lsited above).

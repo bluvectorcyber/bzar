@@ -34,7 +34,7 @@ event smb1_tree_connect_andx_request(c: connection, hdr: SMB1::Header, path: str
 
 event smb1_nt_create_andx_request(c: connection, hdr: SMB1::Header, name: string) &priority=3
 {
-	# Copied this snippet from Bro default handler:
+	# Copied this snippet from Zeek default handler:
 	# base/protocols/smb/smb1-main.zeek#smb1_write_andx_request.
 	# It is important to know the full file path at SMB::FILE_OPEN time,
 	# so the smb_files.log is consistent with smb_cmd.log.
@@ -59,7 +59,7 @@ event smb1_write_andx_response(c: connection, hdr: SMB1::Header, written_bytes: 
 {
 	local smb_action = "SMB::FILE_WRITE to";
 
-	# Copied this snippet from Bro default handler:
+	# Copied this snippet from Zeek default handler:
 	# base/protocols/smb/smb1-main.zeek#smb1_write_andx_request.
 	# Can't hurt to double-check this.
 
