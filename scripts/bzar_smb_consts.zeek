@@ -1,5 +1,5 @@
 #
-# File: bzar_smb_consts.bro
+# File: bzar_smb_consts.zeek
 # Created: 20180701
 # Updated: 20191121
 #
@@ -50,4 +50,4 @@ export
 }
 #end export
 
-#end bzar_smb_consts.bro
+#end bzar_smb_consts.zeek

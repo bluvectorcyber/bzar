@@ -1,5 +1,5 @@
 #
-# File: bzar_dce-rpc_report.bro
+# File: bzar_dce-rpc_report.zeek
 # Created: 20180701
 # Updated: 20191121
 #
@@ -1011,4 +1011,4 @@ function rpc_t1135_log ( c : connection, rpc : string ) : bool
 	return T;
 }
 
-#end bzar_dce-rpc_report.bro
+#end bzar_dce-rpc_report.zeek

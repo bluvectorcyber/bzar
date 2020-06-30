@@ -1,5 +1,5 @@
 #
-# File: bzar_dce-rpc_detect.bro
+# File: bzar_dce-rpc_detect.zeek
 # Created: 20180701
 # Updated: 20191121
 #
@@ -189,4 +189,4 @@ event dce_rpc_response(c: connection, fid: count, ctx_id: count, opnum: count, s
 	}
 }
 
-#end bzar_dce-rpc_detect.bro
+#end bzar_dce-rpc_detect.zeek

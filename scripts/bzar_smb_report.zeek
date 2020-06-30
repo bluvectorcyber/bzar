@@ -1,5 +1,5 @@
 #
-# File: bzar_smb_report.bro
+# File: bzar_smb_report.zeek
 # Created: 20180701
 # Updated: 20191121
 #
@@ -270,4 +270,4 @@ function smb_t1077_t1105_log ( c : connection, action : string ) : bool
 	return T;
 }
 
-#end bzar_smb_report.bro
+#end bzar_smb_report.zeek

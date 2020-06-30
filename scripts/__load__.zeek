@@ -1,5 +1,5 @@
 #
-# File: __load__.bro
+# File: __load__.zeek
 # Created: 20180701
 # Updated: 20191121
 #
@@ -21,4 +21,4 @@
 
 @load-sigs ./dpd.sig
 
-#end __load__.bro
+#end __load__.zeek

@@ -1,5 +1,5 @@
 #
-# File: main.bro
+# File: main.zeek
 # Created: 20180701
 # Updated: 20191121
 #
@@ -171,7 +171,7 @@ event zeek_init()
 	#       remote destination.  Unfortuantely, Bro/Zeek does 
 	#       not have an event for that SMB message-type yet.
 	#
-	# Globals (defined in main.bro above):
+	# Globals (defined in main.zeek above):
 	#    bzar1_epoch
 	#    bzar1_limit
 
@@ -225,7 +225,7 @@ event zeek_init()
 	#    (a) smb1_tree_connect_andx_request::c$smb_state$path contains ADMIN$ or C$
 	#    (b) smb2_tree_connect_request::c$smb_state$path contains ADMIN$ or C$
 	#
-	# Globals (defined in main.bro above):
+	# Globals (defined in main.zeek above):
 	#    bzar2_epoch
 	#    bzar2_limit
 
@@ -278,7 +278,7 @@ event zeek_init()
 	#        any of the following: (see BZAR::txxxx_rpc_strings set for each relevant
 	#        ATT&CK Technique lsited above).
 	# 
-	# Globals (defined in main.bro above):
+	# Globals (defined in main.zeek above):
 	#    bzar3_epoch
 	#    bzar3_limit
 
@@ -308,4 +308,4 @@ event zeek_init()
 	]);
 }
 
-#end main.bro
+#end main.zeek

@@ -1,5 +1,5 @@
 #
-# File: bzar_smb1_detect.bro
+# File: bzar_smb1_detect.zeek
 # Created: 20180701
 # Updated: 20200217
 #
@@ -35,7 +35,7 @@ event smb1_tree_connect_andx_request(c: connection, hdr: SMB1::Header, path: str
 event smb1_nt_create_andx_request(c: connection, hdr: SMB1::Header, name: string) &priority=3
 {
 	# Copied this snippet from Bro default handler:
-	# policy/protocols/smb/smb1-main.bro#smb1_write_andx_request.
+	# base/protocols/smb/smb1-main.zeek#smb1_write_andx_request.
 	# It is important to know the full file path at SMB::FILE_OPEN time,
 	# so the smb_files.log is consistent with smb_cmd.log.
 	# Let's do this now, during smb1_nt_create_andx_request.
@@ -60,7 +60,7 @@ event smb1_write_andx_response(c: connection, hdr: SMB1::Header, written_bytes: 
 	local smb_action = "SMB::FILE_WRITE to";
 
 	# Copied this snippet from Bro default handler:
-	# policy/protocols/smb/smb1-main.bro#smb1_write_andx_request.
+	# base/protocols/smb/smb1-main.zeek#smb1_write_andx_request.
 	# Can't hurt to double-check this.
 
 	# Skip if the request was not seen and we don't know what the current file is
@@ -98,4 +98,4 @@ event smb1_write_andx_response(c: connection, hdr: SMB1::Header, written_bytes: 
 	SMB::write_file_log(c$smb_state);
 }
 
-#end bzar_smb1_detect.bro
+#end bzar_smb1_detect.zeek

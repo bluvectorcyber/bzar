@@ -1,5 +1,5 @@
 #
-# File: bzar_config_options.bro
+# File: bzar_config_options.zeek
 # Created: 20191121
 # Updated: 20191121
 #
@@ -379,4 +379,4 @@ export
 }
 #end export
 
-#end bzar_config_options.bro
+#end bzar_config_options.zeek

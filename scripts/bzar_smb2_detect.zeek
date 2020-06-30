@@ -1,5 +1,5 @@
 #
-# File: bzar_smb2_detect.bro
+# File: bzar_smb2_detect.zeek
 # Created: 20180701
 # Updated: 20191121
 #
@@ -16,7 +16,7 @@ module BZAR;
 event smb2_message(c: connection, hdr: SMB2::Header, is_orig: bool) &priority=3
 {
 	# Copied this snippet from Bro default handler:
-	# policy/protocols/smb/smb1-main.bro#smb1_message.
+	# base/protocols/smb/smb1-main.zeek#smb1_message.
 	# The smb_cmd.log was inconsistent with the .$tree field
 	# for SMB1 (populated) and SMB2 (was not populated).
 
@@ -30,7 +30,7 @@ event smb2_tree_connect_request(c: connection, hdr: SMB2::Header, path: string) 
 	local smb_action = "SMB::TREE_CONNECT to";
 
 	# Copied this snippet from Bro default handler:
-	# policy/protocols/smb/smb1-main.bro#smb1_tree_connect_andx_request.
+	# base/protocols/smb/smb1-main.zeek#smb1_tree_connect_andx_request.
 	# The smb_cmd.log was inconsistent with certain fields
 	# for SMB1 (populated) and SMB2 (was not populated).
 
@@ -58,7 +58,7 @@ event smb2_tree_connect_request(c: connection, hdr: SMB2::Header, path: string) 
 event smb2_create_request(c: connection, hdr: SMB2::Header, request: SMB2::CreateRequest) &priority=3
 {
 	# Copied this snippet from Bro default handler:
-	# policy/protocols/smb/smb1-main.bro#smb1_write_andx_request.
+	# base/protocols/smb/smb1-main.zeek#smb1_write_andx_request.
 	# It is important to know the full file path at SMB::FILE_OPEN time,
 	# so the smb_files.log is consistent with smb_cmd.log.
 	# Let's do this now, during smb2_create_request.
@@ -119,4 +119,4 @@ event smb2_write_request(c: connection, hdr: SMB2::Header, file_id: SMB2::GUID, 
 #	SMB::write_file_log(c$smb_state); 
 #}
 
-#end bzar_smb2_detect.bro
+#end bzar_smb2_detect.zeek

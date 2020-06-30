@@ -1,5 +1,5 @@
 #
-# File: bzar_dce-rpc_consts.bro
+# File: bzar_dce-rpc_consts.zeek
 # Created: 20180701
 # Updated: 20200217
 #
@@ -1734,4 +1734,4 @@ export
 	} &redef;
 }
 
-#end bzar_dce-rpc_consts.bro
+#end bzar_dce-rpc_consts.zeek
