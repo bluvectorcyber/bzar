@@ -160,16 +160,10 @@ event zeek_init()
 	#
 	# Relevant Indicator(s) Detected by Zeek:
 	#    (a) smb1_write_andx_response::c$smb_state$path contains ADMIN$ or C$
-	#    (b) smb2_write_request::c$smb_state$path contains ADMIN$ or C$ *
+	#    (b) smb2_write_response::c$smb_state$path contains ADMIN$ or C$
 	#    (c) dce_rpc_response::c$dce_rpc$endpoint + c$dce_rpc$operation contains 
 	#        any of the following: (see BZAR::t1035_rpc_strings, BZAR::t1047_rpc_strings,
 	#        and BZAR::t1053_rpc-strings sets).
-	# 
-	# NOTE: Preference would be to detect 'smb2_write_response' 
-	#       event (instead of 'smb2_write_request'), because it 
-	#       would confirm the file was actually written to the 
-	#       remote destination.  Unfortuantely, Zeek does 
-	#       not have an event for that SMB message-type yet.
 	#
 	# Globals (defined in main.zeek above):
 	#    bzar1_epoch

@@ -185,11 +185,10 @@ function smb_t1077_t1105_log ( c : connection, action : string ) : bool
 	#	SMB2-Tree-Connect-Request to ADMIN$ or C$
 	#
 	# 02:	SMB1-Write-Response
-	#	SMB2-Write-Request*
+	#	SMB2-Write-Response*
 	#
 	#	* NOTE: Zeek event for SMB2-Write-Response was introduced
-	#	  in Zeek v3.0.0.  Therefore, for Bro v2.6 (and earlier), need
-	#	  to use SMB2-Write-Request event instead.
+	#	  in Zeek v3.0.0.
 	#
 	# Analytics
 	# 01:	Detect single instance of SMB-Write to ADMIN$ or C$

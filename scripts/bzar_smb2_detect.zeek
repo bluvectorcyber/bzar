@@ -70,22 +70,24 @@ event smb2_create_request(c: connection, hdr: SMB2::Header, request: SMB2::Creat
 
 event smb2_write_request(c: connection, hdr: SMB2::Header, file_id: SMB2::GUID, offset: count, data_len: count) &priority=3 
 { 
-	# Keep track of the number of bytes in the Write Response. 
-	# priority==3 ... We want to execute before writing to smb_files.log
+	# Keep track of the number of bytes in the Write Request. 
 
 	c$smb_state$current_file$data_offset_req = offset;
 	c$smb_state$current_file$data_len_req    = data_len;
 } 
 
 
-event smb2_write_request(c: connection, hdr: SMB2::Header, file_id: SMB2::GUID, offset: count, data_len: count) &priority=2 
+event smb2_write_response(c: connection, hdr: SMB2::Header, written_bytes: count) &priority=3
 {
-	# NOTE: Preference would be to detect 'smb2_write_response' 
-	#       event (instead of 'smb2_write_request'), because it 
-	#       would confirm the file was actually written to the 
-	#       remote destination.  Unfortuantely, Zeek does 
-	#       not have an event for that SMB message-type yet.
+	# Keep track of the number of bytes in the Write Response. 
+	# priority==3 ... We want to execute before writing to smb_files.log
 
+	c$smb_state$current_file$data_len_rsp = written_bytes;
+}
+
+
+event smb2_write_response(c: connection, hdr: SMB2::Header, written_bytes: count) &priority=2
+{
 	local smb_action = "SMB::FILE_WRITE to";
 
 	# Check if detect_option is True &&
@@ -104,19 +106,9 @@ event smb2_write_request(c: connection, hdr: SMB2::Header, file_id: SMB2::GUID, 
 }
 
 
-# #
-# # WARNING: No event generated for SMB2_WRITE_RESPONSE
-# #
-#event smb2_write_response(c: connection, hdr: SMB2::Header, file_id: SMB2::GUID, written_bytes: count) &priority=3
-#{
-#	# Keep track of the number of bytes in the Write Response. 
-#	# priority==3 ... We want to execute before writing to smb_files.log
-#	c$smb_state$current_file$data_len_rsp = written_bytes;
-#}
-
-#event smb2_write_response(c: connection, hdr: SMB2::Header, file_id: SMB2::GUID, written_bytes: count) &priority=-5
-#{
-#	SMB::write_file_log(c$smb_state); 
-#}
+event smb2_write_response(c: connection, hdr: SMB2::Header, written_bytes: count) &priority=-5
+{
+	SMB::write_file_log(c$smb_state); 
+}
 
 #end bzar_smb2_detect.zeek
